@@ -1,0 +1,293 @@
+/*===============================
+  Layout
+===============================*/
+.skills-container {
+  padding: 5% 10%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+
+  svg { color: white; }
+}
+
+.skills-container .skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 50px;
+}
+
+.skill {
+  align-items: center;
+  text-align: left;
+
+  &.current {
+    grid-column: 2 / 4;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    white-space: nowrap;
+  }
+
+  .term-text {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 12px;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    .term-gradient {
+      font-weight: 700;
+      background: #dca308;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  .chip-title {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: white;
+    padding-right: 10px;
+  }
+}
+
+/*===============================
+  Chip Styles
+===============================*/
+.chip {
+  color: rgb(39, 40, 34) !important;
+  background: linear-gradient(90deg, #fddb4d, #f3ae2c) !important;
+  font-size: 0.8rem !important;
+  height: 25px !important;
+
+  span {
+    font-family: 'Courier Prime', monospace;
+    color: rgb(39, 40, 34);
+  }
+
+  svg { height: 15px !important; }
+
+  &:hover {
+    outline: 2px solid currentColor !important;
+  }
+}
+
+.flex-chips {
+  line-height: 2;
+  margin: 0.5em 0;
+
+  .MuiChip-root { margin-right: 0.5em; }
+  .MuiChip-outlined { background-color: #e0e0e0; }
+  .MuiChip-outlined span { color: rgb(39, 40, 34); }
+}
+
+
+/*===============================
+  Logo Slider
+===============================*/
+.logo-slider {
+  overflow: hidden;
+  width: 100%;
+  max-width: 700px;
+  margin: 1rem 0 0 0;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+}
+
+.logo-track {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: fit-content;
+  animation: scroll 20s linear infinite;
+
+  img {
+    height: 90px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 5px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    max-width: 120px;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &.logo-ansys {
+      height: 90px !important;
+      width: auto !important;
+      max-width: 250px !important;
+    }
+
+    &.logo-solidworks,
+    &.logo-siemensnx {
+      height: 90px !important;
+      width: auto !important;
+      max-width: 180px !important;
+    }
+  }
+}
+
+@keyframes scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/*===============================
+  Logos
+===============================*/
+.waterloo-logo,
+.cybertruck-logo {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 2px;
+  object-fit: contain;
+}
+
+.waterloo-logo {
+  max-height: 110px;
+}
+
+.cybertruck-logo {
+  max-height: 130px;
+  margin: 0 auto 1rem;
+}
+
+/*===============================
+  Responsive
+===============================*/
+@media (max-width: 768px) {
+  .skills-container {
+    display: block;
+    padding: 0 5%;
+  }
+
+  .skills-container .skills-grid {
+    display: block;
+  }
+
+  .skills-container .skill {
+    padding-bottom: 5%;
+  }
+
+  .skills-container .skill h3         { font-size: 1.4rem !important; }
+  .skills-container .skill .term-text { font-size: 1.6rem !important; }
+  .chip-title                          { font-size: 1rem !important; }
+  .chip                                { font-size: 0.7rem !important; height: 22px !important; padding: 0 10px !important; }
+
+  .logo-track img {
+    height: 45px;
+    max-width: 90px;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .cyber-text { font-size: 1.4rem !important; }
+  .waterloo-logo { max-width: 250px !important; }
+  .cybertruck-logo { max-height: 100px !important; }
+
+  .blue-term {
+    font-size: clamp(2rem, 25vw, 4rem);
+  }
+
+  .skills-container .skills-grid .skill .term-text {
+    font-size: 1.3rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .skills-container .skills-grid .skill .term-text .term-gradient {
+    font-size: 1.3rem !important;
+    line-height: 1.3 !important;
+  }
+}
+
+/*===============================
+  Blue Term Heading
+===============================*/
+.blue-term {
+  display: inline-block;
+  font-weight: bold;
+  line-height: 1;
+  background: linear-gradient(90deg,rgba(93, 0, 156, 1) 0%, rgba(29, 104, 253, 1) 50%, rgba(252, 176, 69, 1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 1rem 0;
+}
+
+@media (max-width: 768px) {
+  .blue-term {
+    font-size: clamp(4rem, 15vw, 6rem);
+  }
+}
+
+.italic-text {
+  font-style: italic;
+}
+
+@media only screen and (max-width: 414px) {
+  .cyber-text { font-size: 1.4rem !important; }
+  .waterloo-logo { max-width: 250px !important; }
+  .cybertruck-logo { max-height: 100px !important; }
+
+  .blue-term {
+    font-size: clamp(1.0rem, 8vw, 1.8rem) !important;
+    line-height: 1.1 !important;
+  }
+
+  .skills-container .skills-grid .skill .term-text {
+    font-size: 1.3rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .skills-container .skills-grid .skill .term-text .term-gradient {
+    font-size: 1.3rem !important;
+    line-height: 1.3 !important;
+  }
+}
+
+h1 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 414px) {
+  h1 {
+    font-size: 2.1rem !important;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .logo-track {
+    gap: 12px !important;
+    padding: 0 10px;
+
+    img {
+      height: 55px !important;
+      max-width: 100px !important;
+      flex-shrink: 0 !important;
+    }
+
+    img.logo-ansys {
+      height: 60px !important;
+      max-width: 140px !important;
+    }
+
+    img.logo-solidworks,
+    img.logo-siemensnx {
+      height: 60px !important;
+      max-width: 120px !important;
+    }
+  }
+}

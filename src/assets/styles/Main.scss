@@ -1,0 +1,261 @@
+.dark-mode .about-section {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.light-mode .about-section {
+    background-image: url("/assets/images/whiteport.jpg"); // use a lighter version of the background
+    background-color: #fff; // fallback
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: black;
+  
+    // optional fix for text colors if you use black text in light mode
+    .content,
+    .content p,
+    .content h1,
+    .social_icons,
+    .mobile_social_icons {
+      color: black;
+    }
+  }
+
+.about-section {
+    display: flex;
+    gap: 30px;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 0px 15%;
+    min-height: 1000px;
+    background-image: url("/assets/images/bg-dark.png"); 
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.about-section .content {
+    text-align: left;
+    z-index: 2;
+
+    .social_icons {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        color: white;
+
+        svg {
+            font-size: 1.8em;
+        }
+    }
+
+    .mobile_social_icons {
+        display: none;
+    }
+
+    p {
+        font-size: 1.5em;
+        margin-block-start: 0px;
+        margin-block-end: 0px;
+    }
+
+    h1 {
+        font-size: 5em;
+        margin-block-start: 0px;
+        margin-block-end: 0px;
+    }
+}
+
+.about-section .image-wrapper {
+    z-index: 2;
+    img {
+        width: 150px;
+        border-radius: 50%;
+    }
+}
+
+.about p {
+    text-align: center;
+    padding-top: 30%;
+    padding-bottom: 30%;
+}
+
+@media screen {
+    @media (max-width: 567px) {
+        .about-section {
+            background-image: url("/assets/images/bg-dark.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: scroll !important;
+            background-position: center;
+            background-color: #000;
+        
+            padding-top: 150px;
+            display: block;
+            padding-left: 0px;
+            padding-right: 0px;
+            min-height: 650px;
+          }
+  
+      .about-section h1 {
+        font-size: 1.8em !important;
+      }
+  
+      .about-section p {
+        font-size: 1em;
+      }
+  
+      .about-section .image-wrapper img {
+        width: 100px;
+      }
+  
+      .nav-left img {
+        height: 35px;
+      }
+  
+      .nav-right {
+        float: right;
+      }
+  
+      .nav-right li {
+        padding: 10px 15px;
+        list-style: none;
+        font-size: 13px;
+        color: white;
+        width: 10%;
+      }
+  
+      .nav-right ul {
+        list-style-type: none;
+        margin: 0px;
+        padding: 0px;
+      }
+  
+      body {
+        width: 100%;
+      }
+  
+      .about {
+        padding-left: 5%;
+        padding-right: 5%;
+        font-size: 12px;
+      }
+    }
+  
+    @media (max-width: 768px) {
+      .about-section h1 {
+        font-size: 2.5em !important;
+        text-align: left;
+      }
+  
+      .about-section p {
+        text-align: left;
+      }
+  
+      .container {
+        display: initial;
+      }
+  
+      .social_icons {
+        display: none !important;
+      }
+  
+      .mobile_social_icons {
+        padding-top: 10px;
+        display: flex !important;
+        flex-direction: row;
+        gap: 10px;
+        color: white;
+  
+        svg {
+          font-size: 1.8em;
+        }
+      }
+  
+      .about-section {
+        padding-top: 150px;
+        display: block;
+        padding-left: 0px;
+        padding-right: 0px;
+  
+        // ✅ Add here too for larger phones/tablets
+        background-attachment: scroll !important;
+        background-color: #000;
+      }
+  
+      .about-section .content {
+        width: 90%;
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-bottom: 5%;
+      }
+  
+      .about-section .image-wrapper {
+        padding-left: 5%;
+        width: 100%;
+      }
+    }
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+
+  .btn {
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+
+    svg {
+      font-size: 1.1rem;
+    }
+  }
+
+  /* ✅ Dark Mode - Both Buttons Same */
+  .projects-btn,
+  .resume-btn {
+    background-color: transparent;
+    color: white;
+    border-color: white;
+
+    &:hover {
+      background-color: white;
+      color: black;
+
+      svg {
+        color: black;
+      }
+    }
+  }
+}
+
+/* ✅ Light Mode Override - Both Buttons Same */
+.light-mode .action-buttons .btn {
+  background-color: transparent;
+  border-color: black;
+  color: black;
+
+  &.projects-btn:hover,
+  &.resume-btn:hover {
+    background-color: black;
+    color: white;
+
+    svg {
+      color: white;
+    }
+  }
+}
+
+.linkedin-btn {
+  @extend .resume-btn; // If using SCSS inheritance
+}

@@ -1,0 +1,462 @@
+.projects-container {
+  background: inherit;
+
+  &.light {
+    background: #f8f9fa;
+  }
+  &.dark {
+    background: #0d1117;
+  }
+
+  padding: 5% 7%;
+  color: inherit;
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  max-width: 1800px;
+  margin: 0 auto;
+
+  @media (max-width: 700px) {
+    display: block;
+  }
+}
+
+.project {
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, outline 0.2s ease;
+  display: flex;
+  flex-direction: column;
+
+  .projects-container.light & {
+    background: #ffffff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .projects-container.dark & {
+    background: #1e1f23;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.1);
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    outline-offset: 2px;
+
+    .projects-container.light & {
+      outline: 2px solid #000;
+    }
+    .projects-container.dark & {
+      outline: 2px solid #fff;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 185px; // ⬅️ lowered image height
+    object-fit: cover;
+    display: block;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    margin: 0.4rem 1rem 0.2rem;
+  }
+
+  p {
+    font-size: 0.78rem;
+    margin: 0 1rem 0.8rem;
+    line-height: 1.2;
+    max-height: 2.6em; // ⬅️ truncate tall text naturally
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @media (max-width: 700px) {
+    margin-bottom: 2rem;
+  }
+}
+
+.zoom {
+  border-radius: 5px;
+  transition: none !important;
+  margin: 0 auto;
+
+  &:hover {
+    transform: none !important;
+  }
+}
+
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  .modal-card {
+    position: relative;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 900px;
+    width: 85%;
+    max-height: 100vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    color: inherit;
+    transition: background 0.3s, color 0.3s;
+
+    &.light {
+      background: #ffffff;
+      color: #000;
+    }
+
+    &.dark {
+      background: #1e1f23;
+      color: #fff;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      max-width: 600px; // increase modal image width
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    p {
+      margin: 0 0 1rem;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #00d2ff;
+      text-decoration: underline;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.75rem;
+      background: transparent;
+      border: none;
+      font-size: 2rem;
+      color: inherit;
+      cursor: pointer;
+    }
+  }
+
+    /* ====== Flex Chips for Skills ====== */
+
+  .flex-chips {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    line-height: 2;
+    margin: 0.5rem 0;
+
+    .chip-title {
+      color: white;
+      padding-right: 10px;
+    }
+  }
+
+  .flex-chips .MuiChip-root {
+    margin-right: 0.5em;
+    background: linear-gradient(90deg, #fddb4d, #f3ae2c) !important;
+    color: rgb(39, 40, 34) !important;
+    font-size: 0.8rem !important;
+    height: 25px !important;
+    font-family: 'Courier Prime', monospace;
+
+    span {
+      color: rgb(39, 40, 34);
+    }
+
+    svg {
+      height: 15px !important;
+    }
+  }
+
+  .light-mode .chip:hover {
+    outline: 2px solid #000 !important;
+  }
+
+  .dark-mode .chip:hover {
+    outline: 2px solid #fff !important;
+  }
+}
+
+/*===============================
+  Chip Styles
+===============================*/
+.chip {
+  color: rgb(39, 40, 34) !important;
+  background: linear-gradient(90deg, #fddb4d, #f3ae2c) !important;
+  font-size: 0.75rem !important;
+  height: 21px !important;
+
+  span {
+    font-family: 'Courier Prime', monospace;
+    color: rgb(39, 40, 34);
+  }
+
+  svg { height: 15px !important; }
+
+  &:hover {
+    outline: 2px solid currentColor !important;
+  }
+}
+
+.flex-chips-preview {
+  margin-top: 0.5rem;
+}
+
+.chip-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;            // space between chips
+  padding-left: 1rem;   // indent from left
+  padding-bottom: 1rem;
+}
+
+.flex-skills-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.flex-skills-row strong {
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .project-modal {
+    align-items: stretch;         // fill vertical space
+    justify-content: stretch;     // fill horizontal space
+
+    .modal-card {
+      width: 100vw;               // full screen width
+      height: 100vh;              // full screen height
+      border-radius: 0 !important;
+      padding: 1.5rem 1rem !important;
+      max-width: none !important;
+      max-height: none !important;
+    }
+  }
+
+  .project-modal .project-meta div {
+    font-size: 0.9rem !important;
+  }
+
+  .project-modal .modal-section p {
+    font-size: 0.75rem !important;
+  }
+
+  .project-modal .MuiChip-root {
+    font-size: 0.6rem !important;
+    height: 16px !important;
+    padding: 0 4px !important;
+    min-width: unset !important; // ⬅️ override default Material UI min width if needed
+
+  }
+
+  .project-modal .MuiChip-root span {
+    font-size: 0.6rem !important;
+  }
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; // <- was 'center'
+  text-align: left;        // <- was 'center'
+
+  img {
+    align-self: center;    // <- to keep the image centered
+  }
+
+  .caption {
+    text-align: center;    // <- if you still want the caption centered
+  }
+
+  details {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-modal h3 {
+    margin-bottom: 4px !important;
+  }
+
+  .project-modal .gallery-item {
+    margin-bottom: 0px !important;
+  }
+
+  .project-modal .gallery-item img {
+    margin-bottom: 2px !important; /* tighten image-to-text gap */
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .project-modal .gallery-item p {
+    margin-top: 2px !important; /* reduce space above text */
+    font-size: 0.85rem !important;
+    text-align: left;
+  }
+
+  .project-modal details summary {
+    font-size: 0.9rem !important;
+    padding: 0.4rem 0 !important;
+  }
+  
+  .project-modal details p {
+    font-size: 0.75rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .project-modal details img {
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 8px;
+  }
+
+  .project-modal details {
+  margin-top: 0.5rem !important;
+  padding: 0 0.5rem !important;
+}
+
+.project-modal summary {
+  font-weight: 600;
+  font-size: 0.9rem !important;
+}
+}
+
+details.subsection {
+  margin-left: 1.5rem; // or adjust to taste
+}
+
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem; // <-- This controls the spacing between chips
+}
+
+
+.accordion-text {
+    text-align: left !important;
+    margin-left: 0 !important;
+    align-self: flex-start !important;
+}
+
+.accordion-content-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem; // spacing between text and image
+  flex-wrap: wrap; // for responsiveness
+
+  .text-side {
+    flex: 1;
+    min-width: 250px;
+  }
+
+  .image-side {
+    flex: 1;
+    min-width: 250px;
+
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+  }
+}
+
+.accordion-content-layout {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease-in;
+
+  details[open] & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+details.subsection img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: 0.5rem auto;
+}
+
+@media (min-width: 1600px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 50px;
+    max-width: 2000px;
+  }
+
+  .project img {
+    height: 230px;
+  }
+
+  .project h2 {
+    font-size: 1.8rem;
+  }
+
+  .project p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body.modal-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+}
+
+body.modal-open {
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+}
